@@ -1,0 +1,54 @@
+:root {
+  --border: rgb(3, 169, 244);
+  
+  --g1: rgb(98, 0, 234);
+  --g2: rgb(236, 64, 122);
+  --g3: rgb(253, 216, 53);
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #101010;
+    
+    display: grid;
+    place-items: center;
+
+}
+.card{
+    aspect-ratio: 1/1.6;
+    border: 0.5vmin solid var(--border);
+    cursor: pointer;
+    width: 56vmin;
+    position: relative;
+
+}
+.card::before{
+    content: "";
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+
+    background: linear-gradient(
+        130deg,
+        transparent 0% 33%, 
+        var(--g1) 66% , 
+        var(--g2) 83.5% ,
+        var(--g3) 100% 
+    );
+
+    background-position: 0% 0%;
+    background-size: 300% 300%;
+    transition: background-position 300ms ease , transform 300ms ease;
+}
+.card:hover::before{
+    background-position: 100% 100%;
+    transform: scale(1.08 , 1.03);  
+     /*the width and the height  */
+
+     
+}
