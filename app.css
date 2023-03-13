@@ -49,6 +49,56 @@ body {
     background-position: 100% 100%;
     transform: scale(1.08 , 1.03);  
      /*the width and the height  */
-
-     
 }
+
+.card-content{
+    background: radial-gradient(
+        rgba(255,255,255,0.2) 8%,
+        transparent 8% 
+    );
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height: 90% ;
+    width: calc(100%-10vmin);
+
+    padding: 5vmin;
+    transition: background-position 300ms ease;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover > .card-content{
+    background-position: -10% 0% ;
+
+} 
+
+.card-title , .card-subtitle{
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    padding: 1vmin;
+}
+
+.player-nav{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid red;
+}
+.player-panel{
+    display: flex;
+    flex-direction: column;
+    height: calc(100%-5vmin);
+    width: calc(100%-5vmin);
+    
+
+}
+.player-panel > #cover{
+    width: auto;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+}
+
+

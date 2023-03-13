@@ -7,11 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./app.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+
 </head>
 
 <body>
     <div class="card">
         <div class="card-content">
+            <div class="player-panel">
+                <input type="file" id="input" accept=".mp3 , .wav">
+                <div id="cover"></div>
+                <p id="title"></p>
+                <p id="artist"></p>
+
+            </div>
+            <nav class="player-nav">
+                <span class="material-symbols-outlined circle">
+                    play_arrow
+                </span>
+                <span class="material-symbols-outlined circle">
+                    skip_previous
+                </span>
+                <span class="material-symbols-outlined circle">
+                    skip_next
+                </span>
+                <span class="material-symbols-outlined circle">
+                    volume_up
+                </span>
+            </nav>
 
         </div>
     </div>
