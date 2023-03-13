@@ -19,24 +19,24 @@
     <div class="card">
         <div class="card-content">
             <div class="player-panel">
-                <input type="file" id="input" accept=".mp3 , .wav">
+                <input type="file" id="input" accept=".mp3 , .wav" multiple>
+                <audio id="song">
+
+                </audio>
                 <div id="cover"></div>
                 <p id="title"></p>
                 <p id="artist"></p>
-
+                <input type="range" value="0" id="progress">
             </div>
             <nav class="player-nav">
-                <span class="material-symbols-outlined circle">
-                    play_arrow
-                </span>
-                <span class="material-symbols-outlined circle">
+                <span class="material-symbols-outlined circle" id="skipPrevious">
                     skip_previous
                 </span>
-                <span class="material-symbols-outlined circle">
+                <span class="material-symbols-outlined circle" id="skipNext" onclick="playNext()">
                     skip_next
                 </span>
-                <span class="material-symbols-outlined circle">
-                    volume_up
+                <span class="material-symbols-outlined circle" id="ctrlIcon" onclick="playPause()">
+                    pause
                 </span>
             </nav>
 

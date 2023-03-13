@@ -65,6 +65,9 @@ body {
     transition: background-position 300ms ease;
     position: relative;
     z-index: 2;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .card:hover > .card-content{
@@ -91,14 +94,34 @@ body {
     flex-direction: column;
     height: calc(100%-5vmin);
     width: calc(100%-5vmin);
+    color: white;
     
-
 }
 .player-panel > #cover{
     width: auto;
     height: 250px;
     background-position: center;
     background-size: cover;
+}
+#cover{
+    margin-top:1em;
+    margin-bottom: 1em;
+    filter: drop-shadow(6px 6px 20px red) invert(15%) opacity(0.7);
+}
+#progress{
+    -webkit-appearance: none;
+    background-color: rgb(95, 95, 95) ;
+    border-radius: 4px;
+    height: 10px;
+    
+}
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: greenyellow;
+    width: 20px;
+    height: 20px;
+    border:5px solid white;
+    border-radius: 50% 10%;
 }
 
 
