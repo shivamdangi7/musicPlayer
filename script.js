@@ -1,5 +1,5 @@
 const jsmediatags = window.jsmediatags;
-let musicnum = 0;
+let musicnum = 1;
 document.querySelector("#input").addEventListener("change", (event) => {
   const file = event.target.files[musicnum];
 
@@ -43,7 +43,7 @@ const input = document.getElementById("input");
 // });
 
 input.addEventListener("change", function () {
-  const selectedFile = input.files[0];
+  const selectedFile = input.files[musicnum];
   const fileReader = new FileReader();
   fileReader.onload = function () {
     song.src = fileReader.result;
@@ -51,14 +51,14 @@ input.addEventListener("change", function () {
   };
   fileReader.readAsDataURL(selectedFile);
 });
-function nextFile() {
-  const currentIndex = input.selectedIndex;
-  const nextIndex = currentIndex + 1;
-  if (nextIndex < input.options.length) {
-    input.selectedIndex = nextIndex;
-    input.dispatchEvent(new Event("change"));
-  }
-}
+// function nextFile() {
+//   const currentIndex = input.selectedIndex;
+//   const nextIndex = currentIndex + 1;
+//   if (nextIndex < input.options.length) {
+//     input.selectedIndex = nextIndex;
+//     input.dispatchEvent(new Event("change"));
+//   }
+// }
 song.onloadedmetadata = function () {
   progress.max = song.duration;
   progress.value = song.currentTime;
@@ -84,4 +84,23 @@ progress.onchange = function () {
   song.currentTime = progress.value;
 };
 
-playNext();
+function playNext() {
+  musicnum++;
+  const selectedFile = input.files[musicnum];
+  const fileReader = new FileReader();
+  fileReader.onload = function () {
+    song.src = fileReader.result;
+    song.play();
+  };
+  fileReader.readAsDataURL(selectedFile);
+}
+function playPrevious() {
+  musicnum--;
+  const selectedFile = input.files[musicnum];
+  const fileReader = new FileReader();
+  fileReader.onload = function () {
+    song.src = fileReader.result;
+    song.play();
+  };
+  fileReader.readAsDataURL(selectedFile);
+}
