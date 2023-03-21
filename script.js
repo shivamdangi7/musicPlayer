@@ -137,6 +137,15 @@ const showfunction = function () {
 const skipPrevious = document.querySelector("#skipPrevious");
 skipPrevious.addEventListener("click", playPrevious);
 skipPrevious.addEventListener("click", showfunction);
+skipPrevious.addEventListener("click", function () {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const randomColor = `rgb(${r},${g},${b})`;
+  document.querySelector(
+    "#cover"
+  ).style.filter = `drop-shadow(0px 0px 5px ${randomColor})`;
+});
 
 const skipNext = document.querySelector("#skipNext");
 skipNext.addEventListener("click", playNext);
