@@ -69,32 +69,40 @@ progress.onchange = function () {
   song.play();
   song.currentTime = progress.value;
 };
-function playNext() {
-  musicnum++;
-  const selectedFile = input.files[musicnum];
-  const fileReader = new FileReader();
-  fileReader.onload = function () {
-    song.src = fileReader.result;
-    song.play();
-  };
-  fileReader.readAsDataURL(selectedFile);
-  console.log(musicnum);
+
+if (progress.value === 100) {
 }
-function playPrevious() {
-  musicnum--;
-  const selectedFile = input.files[musicnum];
-  const fileReader = new FileReader();
-  fileReader.onload = function () {
-    song.src = fileReader.result;
-    song.play();
-  };
-  fileReader.readAsDataURL(selectedFile);
-  console.log(musicnum);
+function playNext() {
+  console.log(`beforPlayNext ${musicnum}`);
+  if (musicnum >= 0 && musicnum < input.files.length - 1) {
+    musicnum++;
+    const selectedFile = input.files[musicnum];
+    const fileReader = new FileReader();
+    fileReader.onload = function () {
+      song.src = fileReader.result;
+      song.play();
+    };
+    fileReader.readAsDataURL(selectedFile);
+    console.log(musicnum);
+  }
 }
 
-const skipPrevious = document.querySelector("#skipPrevious");
-skipPrevious.addEventListener("click", playPrevious);
-skipPrevious.addEventListener("click", function () {
+function playPrevious() {
+  console.log(`beforPlayPrevious ${musicnum}`);
+  if (musicnum > 0 && musicnum < input.files.length) {
+    musicnum--;
+    const selectedFile = input.files[musicnum];
+    const fileReader = new FileReader();
+    fileReader.onload = function () {
+      song.src = fileReader.result;
+      song.play();
+    };
+    fileReader.readAsDataURL(selectedFile);
+    console.log(musicnum);
+  }
+}
+
+const showfunction = function () {
   // musicnum--;
   console.log("previous file");
 
@@ -121,35 +129,21 @@ skipPrevious.addEventListener("click", function () {
       console.log(error);
     },
   });
-});
+};
+
+const skipPrevious = document.querySelector("#skipPrevious");
+skipPrevious.addEventListener("click", playPrevious);
+skipPrevious.addEventListener("click", showfunction);
 
 const skipNext = document.querySelector("#skipNext");
 skipNext.addEventListener("click", playNext);
+skipNext.addEventListener("click", showfunction);
 skipNext.addEventListener("click", function () {
-  // musicnum++;
-
-  const file = input.files[musicnum];
-  console.log("next file");
-  jsmediatags.read(file, {
-    onSuccess: function (tag) {
-      console.log(tag);
-      const data = tag.tags.picture.data;
-      const format = tag.tags.picture.format;
-      let base64String = "";
-      for (let i = 0; i < data.length; i++) {
-        base64String += String.fromCharCode(data[i]);
-      }
-      document.querySelector(
-        "#cover"
-      ).style.backgroundImage = `url(data:${format};base64,${window.btoa(
-        base64String
-      )})`;
-
-      document.querySelector("#title").textContent = tag.tags.title;
-      document.querySelector("#artist").textContent = tag.tags.artist;
-    },
-    onError: function (error) {
-      console.log(error);
-    },
-  });
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const randomColor = `rgb(${r},${g},${b})`;
+  document.querySelector(
+    "#cover"
+  ).style.filter = `drop-shadow(0px 0px 5px ${randomColor})`;
 });

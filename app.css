@@ -10,7 +10,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #101010;
+    background-color: #000000;
     
     display: grid;
     place-items: center;
@@ -19,9 +19,10 @@ body {
 .card{
     aspect-ratio: 1/1.6;
     border: 0.5vmin solid var(--border);
-    cursor: pointer;
+
     width: 56vmin;
     position: relative;
+    border-radius: 15px;
 
 }
 .card::before{
@@ -67,7 +68,8 @@ body {
     z-index: 2;
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    
 }
 
 .card:hover > .card-content{
@@ -75,19 +77,26 @@ body {
 
 } 
 
-.card-title , .card-subtitle{
+/* .card-title , .card-subtitle{
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
     padding: 1vmin;
-}
+} */
 
 .player-nav{
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    /* cursor: pointer; */
+}
+.player-nav> span{
+    padding: 0.5em 0.5em 0.5em 0.5em  ;
+    cursor: pointer;
+    font-size: 30px;
+
 }
 .player-panel{
     display: flex;
@@ -99,20 +108,25 @@ body {
 }
 .player-panel > #cover{
     width: auto;
-    height: 250px;
+    height: 18rem;
     background-position: center;
     background-size: cover;
+    border-radius: 15px;
+}
+.player-panel > p {
+    font-family: 'Space Grotesk', sans-serif;
 }
 #cover{
     margin-top:1em;
     margin-bottom: 1em;
-    filter: drop-shadow(6px 6px 20px red) invert(15%) opacity(0.7);
+    filter: drop-shadow(0px 0px 0px 50px rgb(0,0,0)) invert(10%) opacity(0.9);
 }
 #progress{
     -webkit-appearance: none;
     background-color: rgb(95, 95, 95) ;
     border-radius: 4px;
     height: 10px;
+    margin: 1em 0 1em 0;
     
 }
 #progress::-webkit-slider-thumb{
