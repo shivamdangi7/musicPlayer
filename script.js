@@ -20,8 +20,6 @@ function thumbnail() {
 
         document.querySelector("#title").textContent = tag.tags.title;
         document.querySelector("#artist").textContent = tag.tags.artist;
-        // document.querySelector("#album").textContent = tag.tags.album;
-        // document.querySelector("#genre").textContent = tag.tags.genre;
       },
       onError: function (error) {
         console.log(error);
@@ -36,7 +34,7 @@ let song = document.getElementById("song");
 
 const input = document.getElementById("input");
 
-input.addEventListener("change", function () {
+const inputPlay = () => {
   const selectedFile = input.files[musicnum];
   const fileReader = new FileReader();
   fileReader.onload = function () {
@@ -44,7 +42,14 @@ input.addEventListener("change", function () {
     song.play();
   };
   fileReader.readAsDataURL(selectedFile);
+  console.log(musicnum);
+};
+
+// input is got played as soon they are changed
+input.addEventListener("change", function () {
+  inputPlay();
 });
+
 song.onloadedmetadata = function () {
   progress.max = song.duration;
   progress.value = song.currentTime;
@@ -79,14 +84,7 @@ function playNext() {
   console.log(`beforePlayNext ${musicnum}`);
   if (musicnum >= 0 && musicnum < input.files.length - 1) {
     musicnum++;
-    const selectedFile = input.files[musicnum];
-    const fileReader = new FileReader();
-    fileReader.onload = function () {
-      song.src = fileReader.result;
-      song.play();
-    };
-    fileReader.readAsDataURL(selectedFile);
-    console.log(musicnum);
+    inputPlay();
   }
 }
 
@@ -94,14 +92,7 @@ function playPrevious() {
   console.log(`beforePlayPrevious ${musicnum}`);
   if (musicnum > 0 && musicnum < input.files.length) {
     musicnum--;
-    const selectedFile = input.files[musicnum];
-    const fileReader = new FileReader();
-    fileReader.onload = function () {
-      song.src = fileReader.result;
-      song.play();
-    };
-    fileReader.readAsDataURL(selectedFile);
-    console.log(musicnum);
+    inputPlay();
   }
 }
 
@@ -134,28 +125,26 @@ const showfunction = function () {
   });
 };
 
+const randcolor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r},${g},${b})`;
+};
 const skipPrevious = document.querySelector("#skipPrevious");
 skipPrevious.addEventListener("click", playPrevious);
 skipPrevious.addEventListener("click", showfunction);
 skipPrevious.addEventListener("click", function () {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  const randomColor = `rgb(${r},${g},${b})`;
   document.querySelector(
     "#cover"
-  ).style.filter = `drop-shadow(0px 0px 5px ${randomColor})`;
+  ).style.filter = `drop-shadow(0px 0px 5px ${randcolor()})`;
 });
 
 const skipNext = document.querySelector("#skipNext");
 skipNext.addEventListener("click", playNext);
 skipNext.addEventListener("click", showfunction);
 skipNext.addEventListener("click", function () {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  const randomColor = `rgb(${r},${g},${b})`;
   document.querySelector(
     "#cover"
-  ).style.filter = `drop-shadow(0px 0px 5px ${randomColor})`;
+  ).style.filter = `drop-shadow(0px 0px 5px ${randcolor()})`;
 });
