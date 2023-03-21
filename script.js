@@ -63,6 +63,7 @@ function playPause() {
 if (song.play()) {
   setInterval(() => {
     progress.value = song.currentTime;
+    // console.log(progress.value);
   }, 500);
 }
 progress.onchange = function () {
@@ -70,10 +71,12 @@ progress.onchange = function () {
   song.currentTime = progress.value;
 };
 
-if (progress.value === 100) {
-}
+// if (progress.value == 100) {
+//   playNext();
+//   showfunction();
+// }
 function playNext() {
-  console.log(`beforPlayNext ${musicnum}`);
+  console.log(`beforePlayNext ${musicnum}`);
   if (musicnum >= 0 && musicnum < input.files.length - 1) {
     musicnum++;
     const selectedFile = input.files[musicnum];
@@ -88,7 +91,7 @@ function playNext() {
 }
 
 function playPrevious() {
-  console.log(`beforPlayPrevious ${musicnum}`);
+  console.log(`beforePlayPrevious ${musicnum}`);
   if (musicnum > 0 && musicnum < input.files.length) {
     musicnum--;
     const selectedFile = input.files[musicnum];
