@@ -138,15 +138,15 @@ body {
     border-radius: 50% 10%;
 }
 
-
+/* mobile size */
 @media (min-width:320px) and (max-width: 480px) {
 
     .card{
-        height: 60vh;
+        height: 68vh;
         width: 90vmin;
     }
 }
-
+/* tablet size */
 @media (min-width:481px) and (max-width: 768px) {
     .card{
         height: 60vh;
