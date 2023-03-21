@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-content">
             <div class="player-panel">
-                <input type="file" id="input" accept=".mp3 , .wav" multiple>
+                <input type="file" id="input" accept=".mp3 , .wav" multiple onclick="thumbnail()">
                 <audio id="song">
 
                 </audio>
@@ -29,13 +29,13 @@
                 <input type="range" value="0" id="progress">
             </div>
             <nav class="player-nav">
-                <span class="material-symbols-outlined circle" id="skipPrevious" onclick="playPrevious()">
+                <span class="material-symbols-outlined circle" id="skipPrevious">
                     skip_previous
                 </span>
-                <span class="material-symbols-outlined circle" id="skipNext" onclick="playNext()">
+                <span class=" material-symbols-outlined circle" id="skipNext">
                     skip_next
                 </span>
-                <span class="material-symbols-outlined circle" id="ctrlIcon" onclick="playPause()">
+                <span class=" material-symbols-outlined circle" id="ctrlIcon" onclick="playPause()">
                     pause
                 </span>
             </nav>
