@@ -76,10 +76,6 @@ progress.onchange = function () {
   song.currentTime = progress.value;
 };
 
-// if (progress.value == 100) {
-//   playNext();
-//   showfunction();
-// }
 function playNext() {
   console.log(`beforePlayNext ${musicnum}`);
   if (musicnum >= 0 && musicnum < input.files.length - 1) {
@@ -131,20 +127,27 @@ const randcolor = () => {
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r},${g},${b})`;
 };
-const skipPrevious = document.querySelector("#skipPrevious");
-skipPrevious.addEventListener("click", playPrevious);
-skipPrevious.addEventListener("click", showfunction);
-skipPrevious.addEventListener("click", function () {
+const dropshodow = () => {
   document.querySelector(
     "#cover"
   ).style.filter = `drop-shadow(0px 0px 5px ${randcolor()})`;
-});
+};
+
+const skipPrevious = document.querySelector("#skipPrevious");
+skipPrevious.addEventListener("click", playPrevious);
+skipPrevious.addEventListener("click", showfunction);
+skipPrevious.addEventListener("click", dropshodow);
 
 const skipNext = document.querySelector("#skipNext");
 skipNext.addEventListener("click", playNext);
 skipNext.addEventListener("click", showfunction);
-skipNext.addEventListener("click", function () {
-  document.querySelector(
-    "#cover"
-  ).style.filter = `drop-shadow(0px 0px 5px ${randcolor()})`;
+skipNext.addEventListener("click", dropshodow);
+
+// if (parseInt(song.currentTime) == parseInt(song.duration)) {
+// const duration = song.duration;
+
+song.addEventListener("ended", function () {
+  playNext();
+  showfunction();
+  dropshodow();
 });
