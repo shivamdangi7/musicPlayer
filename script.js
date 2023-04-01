@@ -151,3 +151,67 @@ song.addEventListener("ended", function () {
   showfunction();
   dropshodow();
 });
+
+let keys = {
+  sft: false,
+  r: false,
+  l: false,
+};
+
+// Shift + Right
+
+addEventListener("keydown", (event) => {
+  // console.log(event);
+  if (event.key === "Shift") {
+    keys.sft = true;
+  }
+  if (event.key === "ArrowRight") {
+    keys.r = true;
+  }
+
+  if (keys.sft && keys.r) {
+    console.log("Shift + r");
+    playNext();
+    showfunction();
+    dropshodow();
+  }
+});
+
+addEventListener("keyup", (event) => {
+  if (event.key === "Shift") {
+    keys.sft = false;
+  }
+  if (event.key === "ArrowRight") {
+    keys.r = false;
+  }
+});
+
+// Shift+Left
+
+addEventListener("keydown", (event) => {
+  // console.log(event);
+  if (event.key === "Shift") {
+    keys.sft = true;
+  }
+  if (event.key === "ArrowLeft") {
+    keys.l = true;
+  }
+
+  if (keys.sft && keys.l) {
+    console.log("Shift + l");
+    playPrevious();
+    showfunction();
+    dropshodow();
+  }
+});
+
+addEventListener("keyup", (event) => {
+  if (event.key === "Shift") {
+    keys.sft = false;
+  }
+  if (event.key === "ArrowRight") {
+    keys.l = false;
+  }
+});
+
+//Going  after Shift Right if i go towards shift+left it triggers right and left
